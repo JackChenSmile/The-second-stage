@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				width: 500px;
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="load">换一组</button>
+		<ul id="mm"></ul>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$(function() {
+				$("#load").on("click",function(evt) {
+					var url = "http://api.tianapi.com/meinv/?key=c5fe2ac0bf44985d5a6b4c5c9ab08718&num=10"
+					$.getJSON(url,function(jsonObj) {
+//						alert(String.parse(jsonObj.newslist))
+						//  局部刷新页面的代码
+						$("#mm").empty();
+						for (var i = 0;i < jsonObj.newslist.length;i += 1) {
+							$("#mm").append(
+								$("<li>").append(
+									$("<a target='_blank'>")
+										.text(jsonObj.newslist[i].title)
+										.attr("href",jsonObj.newslist[i].picUrl)
+								)
+							);
+						}
+					});
+				});
+			});
+		</script>
+		
+	</body>
+</html>

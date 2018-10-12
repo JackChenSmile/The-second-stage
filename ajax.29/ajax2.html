@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			p{
+				width: 50%;
+				height: 500px;
+				border: 1px solid lightblue;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="edit" value="" />
+		<button id="load">解析</button>
+		<p id="interpret"></p>
+		<script src="js/jquery.min.js"></script>
+		<script>
+//			var str = "狗屎"
+//			// 中文转换成百分号编码
+//			var str2 = encodeURIComponent(str,"utf-8")
+//			alert(str2);
+//			var str3 = decodeURIComponent(str2,"utf-8")
+//			alert(str3);
+			$(function() {
+				$("#load").on("click",function(evt) {
+					var keyword = $("#edit").val().trim();
+					if (keyword.length > 0) {
+						var url = "http://api.tianapi.com/txapi/dream/"
+						$.ajax({
+							"url":url,
+							"type":"get",
+							"data":{
+								"key":"c5fe2ac0bf44985d5a6b4c5c9ab08718",
+								"word":keyword,
+							},
+							"dataType":"json",
+							"success":function(jsonObj) {
+								if (jsonObj.cod == 250) {
+									$("#interpret").text(jsonObj.msg);
+								}else{
+									$("#interpret").text(jsonObj.newslist[0].result);
+								}
+							},
+							"error":function(error) {},
+						});
+					};
+					
+//					
+//					$.getJSON(url,function(jsonObj) {
+////						alert(String.parse(jsonObj.newslist))
+//						//  局部刷新页面的代码
+//						$("#edit").empty();
+//						for (var i = 0;i < jsonObj.newslist.length;i += 1) {
+//							$("#interpret").text(jsonObj.newslist[i].result)
+//							
+//						}
+//					});
+				});
+			});
+		</script>
+	</body>
+</html>

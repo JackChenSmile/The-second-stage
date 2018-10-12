@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//创建对象
+			//  JavaScript创建对象的构造器语法
+			function Student(name,age) {
+				this.name = name;
+				this.age = age;
+				// delete.this.name   删除对象
+/*				this.study = function(courserNamme) {
+					alert(this.name + "正在学习" + courseName);
+				};
+*/
+			}
+			//  反复使用，对象方法绑定在类型的prototype上
+			Student.prototype.study = function(courseName) {             
+					alert(this.name + "正在学习" + courseName);
+			};
+			// 静态方法直接绑定在类型上
+			Student.sayHello = function() {
+				alert("大家好！")
+			};
+			
+			var obj = new Student("天明",20);
+			obj.study("Linux操作系统");
+			Student.sayHello();
+console.log("=====================================================")
+/*
+			// 方法二：JSON = JavaScript Object Notation (临时使用)
+			// JSON是JavaScript中创建对象的字面量语法，现在被广泛应用于数据的存储和交换
+			var obj = {
+				"name" = "天明",
+				"age" = 20,
+				"study":function(courseName) {
+				alert(this.name + "正在学习" + courseName);
+				},
+				"watchMoive":function(){
+					alert("行为二")
+				}
+			};
+			obj.study("Python");
+*/
+console.log("=====================================================")
+/*			创建对象方法一：（不推荐） 创建对象使用- new + 构造函数
+			var obj = new Object();
+			obj.name = "天明";
+			obj.age = 20;
+			obj.study = function(courseName) {
+				alert(this.name + "正在学习" + courseName);
+				if () {
+					
+				}else{
+					
+				}
+			}
+			obj.study("Python");
+*/
+		</script>
+	</body>
+</html>

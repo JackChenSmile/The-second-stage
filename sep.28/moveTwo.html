@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="">
+			*{
+				margin:0;
+				padding:0;
+			}
+			#container{
+				width: 800px;
+				height: 400px;
+				position: relative;
+				left: 340px;
+				top: 40px;
+				background-color: navajowhite;
+				/* 溢出*/
+				overflow: hidden;  /* scroll  滚动条 */
+			}
+			div button{
+				position: relative;
+				left: 640px;
+				top: 60px;
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			
+		</div>
+		<!--checked   复选-->
+		<div id="buttons">
+			<button id="add">添加</button>
+			<button id="flicker">闪烁</button>
+		</div>
+		<script src="js/sep.28.js"></script>
+		<script src="js/jQuery.min.js"></script>
+		<script>
+			//生成[min,max]范围的随机整数
+			function randomInt(min,max){
+				return parseInt(Math.random() * (max - min + 1) + min)
+			}
+			//  生成随机颜色
+			function randomColor(){
+				var red = randomInt(0,255);
+				var green = randomInt(0,255);
+				var blue = randomInt(0,255);
+				return "rgb(" + red + "," + green + "," + blue + ")";
+			}
+			$(function() {
+				$("#add").on("click",function() {
+					//  pre - prepend / previous / prepare 
+					$("#container").append($("<div>").css({
+						"width":"80px",
+						"height":"80px",
+						"float":"left",
+						"background-color":randomColor()
+					}));
+				});
+				$("#flicker").on("click",function() {
+					setInterval(function() {
+						$("#container > div").each(function() {
+							$(this).css("background-color",randomColor());
+						});
+					},200);
+				});
+			});
+/*
+			bind(flicker,"click",function(){
+				if (isFlashing){
+					clearInterval(timerId);
+				}else{
+					timerId = setInterval(function(){
+						var divs = document.querySelectorAll("#container>div");
+						for (i = 0;i < divs.length;i += 1){
+							divs[i].style.backgroundColor = randomColor();
+						}
+					},50)
+				}
+				flicker.innerHTML = isFlashing ? "闪烁" : "暂停";
+				//   将值取反
+				isFlashing = !isFlashing;
+			});
+*/
+		</script>
+	</body>
+</html>
