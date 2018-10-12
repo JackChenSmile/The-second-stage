@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#container {
+				margin: 20px 50px;
+			}
+			#fruits li {
+				list-style: none;
+				width: 200px;
+				height: 50px;
+				font-size: 20px;
+				line-height: 50px;
+				background-color: cadetblue;
+				color: white;
+				text-align: center;
+				margin: 2px 0;
+			}
+			#fruits>li>a {
+				float: right;
+				text-decoration: none;
+				color: white;
+				position: relative;
+				right: 5px;
+			}
+			#fruits~input {
+				border: none;
+				outline: none;
+				font-size: 18px;
+			}
+			#fruits~input[type=text] {
+				border-bottom: 1px solid darkgray;
+				width: 200px;
+				height: 50px;
+				text-align: center;
+			}
+			#fruits~input[type=button] {
+				width: 80px;
+				height: 30px;
+				background-color: coral;
+				color: white;
+				vertical-align: bottom;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<ul id="fruits">
+				<li>苹果<a href="javascript:void(0)">×</a></li>
+				<li>香蕉<a href="javascript:void(0)">×</a></li>
+				<li>火龙果<a href="javascript:void(0)">×</a></li>
+				<li>西瓜<a href="javascript:void(0)">×</a></li>
+			</ul>
+			<input type="text" name="fruit">
+			<input id="ok" type="button" value="确定">
+		</div>
+		<script src="js/ad.js"></script>
+		<script>
+			//   解决浏览器兼容的方法
+//			String.prototype.trim = String.prototype.trim ||
+//			function(){
+//				this;    //  this相当于Python中的self
+//				return "";
+//			};
+			function deleteItem(evt){
+				evt = evt || window.event;
+				evt.target = evt.target || evt.srcElement;
+				var li = evt.target.parentNode;	
+				// remove删除节点（元素）
+				li.parentNode.removeChild(li);
+			}
+			var delAnchors = document.querySelectorAll("#fruits a");
+			//   给标签绑定事件
+			for (var i = 0;i < delAnchors.length;i += 1){
+				bind(delAnchors[i],"click",deleteItem);
+			}
+			var okBtn = document.getElementById("ok")
+			var fruitInput = document.querySelector("#container>input[type=text]")
+			var fruitsUl = document.getElementById("fruits");
+			bind(okBtn,"click",function(){
+				var fruitName = fruitInput.value.trim();
+				if (fruitName.length > 0){
+					// 创建新节点，创建新标签
+					var li = document.createElement("li")
+					li.innerHTML = fruitName;
+					var a = document.createElement("a")
+					a.innerHTML = "x"
+					a.href = "javascript:void(0)"
+					bind(a,"click",deleteItem);
+					//  appendChild追加，添加新的元素
+					li.appendChild(a);
+					// fruitsUl.appendChild(li);
+					//  insertBefore  在某一个元素的前面添加节点（元素）
+					fruitsUl.insertBefore(li,fruitsUl.firstChild)
+				}
+			})
+		</script>
+	</body>
+</html>
+

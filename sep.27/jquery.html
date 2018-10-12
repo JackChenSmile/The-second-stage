@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>Hello,world!</h1>
+		<!--
+			Write Less DO More
+			1.解决了浏览器的兼容性问题
+			2.封装了常用的操作用更少的代码做更多的事情
+			引入jQuery
+			1.使用自己项目中的jQuery。min.js
+			2.使用CDN服务器上的jQuery文件
+			如何使用jQuery
+			window.jQuery属性（$）
+		-->
+		<!--<script src="<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>"></script>-->
+		<!--本地使用-->
+		<script src="js/jquery.min.js"></script>    
+		<script>
+			$(function() {
+				$("h1").on("click",function() {
+					$("h1").fadeOut(2000);
+				});
+			});
+		</script>
+	</body>
+</html>

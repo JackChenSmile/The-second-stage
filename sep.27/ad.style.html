@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				color: red;
+				background-color:cornflowerblue ;
+				position: fixed;
+				right: 10px;
+				top: 10px;
+			}
+			#closeBtn{
+				position: fixed;
+				right: 9px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ad">
+			恶意广告
+			<button id="closeBtn">关闭</button>
+		</div>
+		<script src="js/ad.js"></script>
+		<script>
+			var closeBtn = document.getElementById("closeBtn");
+			bind(closeBtn,"click",function(){
+				//元素访问子节点-- children
+				//元素访问父亲节点--- parentNode
+				//元素访问兄弟节点---previousSibling / nextSibling
+//				evt = evt || window.event;
+//				evt.target = evt.target || evt.srcElement;
+//				evt.target.parentNode.style.display = "none"
+//				closeBtn.parentNode.style.visibility = "hidden"
+				//style 可以修改样式，不能读出样式
+//				alert(currentStyle.width);   读不出来盒子的宽
+				var advDiv = closeBtn.parentNode;
+				var currentStyle = advDiv.currentStyle?
+					advDiv.currentStyle:
+					document.defaultView.getComputedStyle(advDiv);
+				//alert(currentStyle.width);
+				//alert(currentStyle.height);
+				//alert(currentStyle.backgroundColor);
+				//  currentStyle.样式   获取样式，并进行修改
+				var width = parseInt(currentStyle.width) + 50;
+				var height = parseInt(currentStyle.height) + 50;
+			bind(closeBtn,"click",function(){
+				closeBtn.parentNode.style.width = width + "px"
+				closeBtn.parentNode.style.height = height + "px"
+			})
+			})
+		</script>
+	</body>
+</html>
