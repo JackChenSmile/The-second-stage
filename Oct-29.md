@@ -79,6 +79,9 @@ body中的内容在网页中都是可见的；body中的标签多个属性之间
   - 加粗 ---------- b / strong(附带强调的效果)
   - 倾斜 ---------- i / em (附带强调的效果)
   - 水平线 ---------- < hr >
+
+![特殊字符表示](https://github.com/JackChenSmile/The-second-stage/blob/master/img/%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E8%A1%A8%E7%A4%BA.png)
+
 - 标题标签
   - h1-h6：< h1 >文本内容< h1 >
 - 段落标签
