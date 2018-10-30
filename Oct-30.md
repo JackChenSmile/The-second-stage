@@ -46,7 +46,7 @@ link标签：
   - rgb(r, g, b)或者 rgba (r, g, b, alpha); r/g/b 的范围(0,255),alpha 范围(0,1)
 - 常用的属性
 
-![常用的属性](F:\GitHub\The-seconde-stage\picture\常用的属性.png)
+![常用的属性](https://github.com/JackChenSmile/The-second-stage/blob/master/picture/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7.png)
 
 #### CSS选择器
 
