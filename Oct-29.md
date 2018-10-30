@@ -134,3 +134,22 @@ body中的内容在网页中都是可见的；body中的标签多个属性之间
   - 表格的合并
     - 有几个表格就写几个表格，再看每一个表格是否有列和行的合并，如果有，就向其中添加合并的标签，如果没有，就直接跳过
     - **colspan**="和并列数" / **rowspan**=“合并行数”
+
+- 下拉菜单
+  - 格式：< select name=" " >
+    ​			< optgroup label="分组名" >< /optgroup >
+    ​			< option value="内容" selected="selected" >内容< /option >
+    ​	< /select >
+  - 属性：
+    - name ----- 提交的时候用来区分不同的数据
+    - value ----- 提交的具体数据
+    - selected ----- 设置默认选中，不设置，默认选第一个
+    - 内容 ----- 显示部分（只能是文字）
+- 多行文本域
+  - 注解：输入的内容可以多行显示
+  - 格式：< textarea name="message" rows="高度"  cols="宽度" >< /textarea >
+  - 属性：
+    - rows：设置一屏最多显示的行数  
+    - cols: 设置一行最多显示的列数
+    - placeholder： 设置默认值
+    - maxlength：一行最多显示的字数
